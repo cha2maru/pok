@@ -359,7 +359,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-repeat="statusTable">
+								<tr v-repeat="statusTable.table1">
 									<td>
 										{{label}}
 									</td>
@@ -388,7 +388,59 @@
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-8 column">
-						<img src="http://dummyimage.com/600x200/123/def"></img>
+						<h3>成長率：その他</h3>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>
+										種別
+									</th>
+									<th>
+										初期値
+									</th>
+									<th>
+										現在値
+									</th>
+									<th>
+										最大値
+									</th>
+									<th>
+										平均増加
+									</th>
+									<th>
+										LV60想定値
+									</th>
+									<th>
+										LV80想定値
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-repeat="statusTable.table2">
+									<td>
+										{{label}}
+									</td>
+									<td>
+										{{after | roundup}}
+									</td>
+									<td>
+										{{before | roundup}}
+									</td>
+									<td>
+										{{max | roundup}}
+									</td>
+									<td>
+										{{ave | roundup 2}}
+									</td>
+									<td>
+										{{limit | roundup}}
+									</td>
+									<td>
+										{{limitbreak | roundup}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="col-md-4 column">
 						<img src="http://dummyimage.com/300x200/123/def"></img>

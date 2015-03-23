@@ -242,6 +242,7 @@ charaSelect = new Vue({
             var roundupPrm = Math.ceil(_status.before.parameter);
             var tweet = _character.name + "(星" + _character.rank+ "/" + _character.job + "/LV" + _character.level + "/" + _character.type + ")の";
             tweet += "戦闘力は" + roundupPrm + "。ステータスの平均増加は" + roundupAve + "です。"; 
+            tweet += "http://cha2maru.github.io/pok/ #ファンキル"; 
             console.log(_character);
             console.log(_status);
             console.log(table1);

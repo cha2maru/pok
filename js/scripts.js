@@ -241,8 +241,16 @@ charaSelect = new Vue({
             var roundupAve = Math.ceil(last.ave * (10 ^ 2)) / (10 ^ 2);
             var roundupPrm = Math.ceil(_status.before.parameter);
             var tweet = _character.name + "(星" + _character.rank+ "/" + _character.job + "/LV" + _character.level + "/" + _character.type + ")の";
-            tweet += "戦闘力は" + roundupPrm + "。ステータスの平均増加は" + roundupAve + "です。"; 
-            tweet += "http://cha2maru.github.io/pok/ #ファンキル"; 
+            tweet += "戦闘力は" + roundupPrm + "。ステータスの1LVでの平均増加は" + roundupAve + "。"; 
+            tweet += "ステータスは上から";
+            for (var i = 0; i < this.statusTableIdx1.length; i++) {
+                tweet += _status.before[this.statusTableIdx1[i].suffix];
+                if(i < this.statusTableIdx1.length-1) {
+                    tweet += "/";
+                }
+            }
+
+            tweet += "です。 http://cha2maru.github.io/pok/ #ファンキル"; 
             console.log(_character);
             console.log(_status);
             console.log(table1);

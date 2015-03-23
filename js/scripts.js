@@ -12,12 +12,6 @@ charaSelect = new Vue({
         this.$set("types", this.getTypes());
         this.$set("pointsR", this.getPointsR());
         this.$set("points", this.getPoints());
-
-        // this.inputRank = this.ranks[0].value;
-        // this.inputType = this.types[0].value;
-        // this.inputLevel = this.levels[0].value;
-        // this.setBefore([50,50,50,50,50,50,50,50]);
-        // this.setAfter([10,10,10,10,10,10,10,10]);
     },
     ready: function() {
         this.$set("inputRank", 5);
@@ -244,7 +238,10 @@ charaSelect = new Vue({
                 }
                 table2.push(target);
             }
-
+            var roundupAve = Math.ceil(last.ave * (10 ^ 2)) / (10 ^ 2);
+            var roundupPrm = Math.ceil(_status.before.parameter);
+            var tweet = _character.name + "(星" + _character.rank+ "/" + _character.job + "/LV" + _character.level + "/" + _character.type + ")の";
+            tweet += "戦闘力は" + roundupPrm + "。ステータスの平均増加は" + roundupAve + "です。"; 
             console.log(_character);
             console.log(_status);
             console.log(table1);
@@ -252,7 +249,8 @@ charaSelect = new Vue({
 
             return {
                 table1: table1,
-                table2: table2
+                table2: table2,
+                tweet: tweet
             };
         },
         input_status: function() {
@@ -341,11 +339,6 @@ charaSelect = new Vue({
             this.$set("inputJob", target);
             console.log("job" + target);
         },
-        // input_status: function(oldval, newval) {
-        //     console.log("status:old/new");
-        //     console.log(oldval);
-        //     console.log(newval);
-        // },
         input_character: function(newval, oldval) {
             console.log("character:old/new");
             console.log(oldval);

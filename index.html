@@ -112,9 +112,9 @@
 			</div>
 		</div>
 		<div class="row clearfix">
-			<div class="col-md-6 column">
+			<div class="col-md-12 column">
 				<div class="row clearfix">
-					<div class="col-md-12 column">
+					<div class="col-md-8 column">
 						<dl>
 							<dt>
                         キャラ選択
@@ -142,226 +142,186 @@
 							</dd>
 						</dl>
 
+					</div>
+					<div class="col-md-4 column">
+						<img src="http://dummyimage.com/300x250/123/def"></img>
+					</div>
+				</div>
+				<div class="row clearfix" id="beforeStatus">
+					<div class="col-md-3 column">
+						<h3>
+						キャラ選択
+					</h3>
 						<form class="form-horizontal" role="form" id="charaselect">
 							<div class="form-group">
-								<label for="inputRank" class="col-sm-2 control-label">ランク</label>
-								<div class="col-sm-10">
+								<label for="inputRank" class="col-sm-4 control-label">ランク</label>
+								<div class="col-sm-8">
 									<select class="form-control" id="inputRank" v-model="inputRank" options="ranks">
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputName" class="col-sm-2 control-label">名前</label>
-								<div class="col-sm-10">
+								<label for="inputName" class="col-sm-4 control-label">名前</label>
+								<div class="col-sm-8">
 									<select class="form-control" id="inputName" v-model="inputName" options="names">
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputJob" class="col-sm-2 control-label">職業</label>
-								<div class="col-sm-10">
+								<label for="inputJob" class="col-sm-4 control-label">職業</label>
+								<div class="col-sm-8">
 									<select class="form-control" id="inputJob" v-model="inputJob" options="jobs">
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputType" class="col-sm-2 control-label">姫型</label>
-								<div class="col-sm-10">
+								<label for="inputType" class="col-sm-4 control-label">姫型</label>
+								<div class="col-sm-8">
 									<select class="form-control" id="inputType" v-model="inputType" options="types">
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputLV" class="col-sm-2 control-label">レベル</label>
-								<div class="col-sm-10">
+								<label for="inputLV" class="col-sm-4 control-label">レベル</label>
+								<div class="col-sm-8">
 									<select class="form-control" id="inputLV" v-model="inputLevel" options="levels" number>
 									</select>
 								</div>
 							</div>
 						</form>
 					</div>
-				</div>
-				<div class="row clearfix" id="beforeStatus">
-					<div class="col-md-4 column">
-						<h3>
-						転生前
-					</h3>
-						<form role="form">
+					<div class="col-md-2 column">
+						<h3>転生前</h3>
+						<form class="form-horizontal" role="form" id="beforeStaus">
 							<div class="form-group">
-								<label for="before{{statusList[0].suffix}}">{{statusList[0].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[0].suffix}}" v-model="beforehp" options="pointsR" number>
+								<label for="before{{statusList[0].suffix}}" class="col-sm-4 control-label">{{statusList[0].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[0].suffix}}" v-model="before.hp" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[1].suffix}}">{{statusList[1].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[1].suffix}}" v-model="beforestr" options="pointsR" number>
+								<label for="before{{statusList[1].suffix}}" class="col-sm-4 control-label">{{statusList[1].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[1].suffix}}" v-model="before.str" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[2].suffix}}">{{statusList[2].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[2].suffix}}" v-model="beforemag" options="pointsR" number>
+								<label for="before{{statusList[2].suffix}}" class="col-sm-4 control-label">{{statusList[2].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[2].suffix}}" v-model="before.mag" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[3].suffix}}">{{statusList[3].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[3].suffix}}" v-model="beforedef" options="pointsR" number>
+								<label for="before{{statusList[3].suffix}}" class="col-sm-4 control-label">{{statusList[3].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[3].suffix}}" v-model="before.def" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[4].suffix}}">{{statusList[4].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[4].suffix}}" v-model="beforemnd" options="pointsR" number>
+								<label for="before{{statusList[4].suffix}}" class="col-sm-4 control-label">{{statusList[4].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[4].suffix}}" v-model="before.mnd" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[5].suffix}}">{{statusList[5].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[5].suffix}}" v-model="beforespd" options="pointsR" number>
+								<label for="before{{statusList[5].suffix}}" class="col-sm-4 control-label">{{statusList[5].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[5].suffix}}" v-model="before.spd" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[6].suffix}}">{{statusList[6].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[6].suffix}}" v-model="beforedex" options="pointsR" number>
+								<label for="before{{statusList[6].suffix}}" class="col-sm-4 control-label">{{statusList[6].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[6].suffix}}" v-model="before.dex" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="before{{statusList[7].suffix}}">{{statusList[7].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="before{{statusList[7].suffix}}" v-model="beforelck" options="pointsR" number>
+								<label for="before{{statusList[7].suffix}}" class="col-sm-4 control-label">{{statusList[7].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="before{{statusList[7].suffix}}" v-model="before.lck" options="points" number>
 									</select>
 								</div>
 							</div>
 						</form>
 					</div>
-					<div class="col-md-4 column">
-						<h3>
-						転生後
-					</h3>
-						<form role="form">
+					<div class="col-md-2 column">
+						<h3>転生後</h3>
+						<form class="form-horizontal" role="form" id="afterStaus">
 							<div class="form-group">
-								<label for="after{{statusList[0].suffix}}">{{statusList[0].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[0].suffix}}" v-model="afterhp" options="pointsR" number>
+								<label for="after{{statusList[0].suffix}}" class="col-sm-4 control-label">{{statusList[0].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[0].suffix}}" v-model="after.hp" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[1].suffix}}">{{statusList[1].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[1].suffix}}" v-model="afterstr" options="pointsR" number>
+								<label for="after{{statusList[1].suffix}}" class="col-sm-4 control-label">{{statusList[1].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[1].suffix}}" v-model="after.str" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[2].suffix}}">{{statusList[2].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[2].suffix}}" v-model="aftermag" options="pointsR" number>
+								<label for="after{{statusList[2].suffix}}" class="col-sm-4 control-label">{{statusList[2].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[2].suffix}}" v-model="after.mag" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[3].suffix}}">{{statusList[3].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[3].suffix}}" v-model="afterdef" options="pointsR" number>
+								<label for="after{{statusList[3].suffix}}" class="col-sm-4 control-label">{{statusList[3].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[3].suffix}}" v-model="after.def" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[4].suffix}}">{{statusList[4].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[4].suffix}}" v-model="aftermnd" options="pointsR" number>
+								<label for="after{{statusList[4].suffix}}" class="col-sm-4 control-label">{{statusList[4].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[4].suffix}}" v-model="after.mnd" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[5].suffix}}">{{statusList[5].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[5].suffix}}" v-model="afterspd" options="pointsR" number>
+								<label for="after{{statusList[5].suffix}}" class="col-sm-4 control-label">{{statusList[5].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[5].suffix}}" v-model="after.spd" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[6].suffix}}">{{statusList[6].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[6].suffix}}" v-model="afterdex" options="pointsR" number>
+								<label for="after{{statusList[6].suffix}}" class="col-sm-4 control-label">{{statusList[6].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[6].suffix}}" v-model="after.dex" options="points" number>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="after{{statusList[7].suffix}}">{{statusList[7].label}}</label>
-								<div class="col-sm-10">
-									<select class="form-control" id="after{{statusList[7].suffix}}" v-model="afterlck" options="pointsR" number>
+								<label for="after{{statusList[7].suffix}}" class="col-sm-4 control-label">{{statusList[7].label}}</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="after{{statusList[7].suffix}}" v-model="after.lck" options="points" number>
 									</select>
 								</div>
 							</div>
 						</form>
 					</div>
-					<!--		<div class="col-md-4 column">-->
-					<!--			<h3>-->
-					<!--			強化値-->
-					<!--		</h3>-->
-					<!--			<form role="form">-->
-					<!--				<div class="checkbox">-->
-					<!--					<label>-->
-					<!--						<input type="checkbox"> 強化済み</label>-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_hp">HP</label>-->
-					<!--					<input class="form-control" id="modify_hp">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_str">力</label>-->
-					<!--					<input class="form-control" id="modify_str">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_mag">魔</label>-->
-					<!--					<input class="form-control" id="modify_mag">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_def">守</label>-->
-					<!--					<input class="form-control" id="modify_def">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_mnd">精</label>-->
-					<!--					<input class="form-control" id="modify_mnd">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_spd">速</label>-->
-					<!--					<input class="form-control" id="modify_spd">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_dex">技</label>-->
-					<!--					<input class="form-control" id="modify_dex">-->
-					<!--				</div>-->
-					<!--				<div class="form-group">-->
-					<!--					<label for="modify_lck">運</label>-->
-					<!--					<input class="form-control" id="modify_lck">-->
-					<!--				</div>-->
-					<!--			</form>-->
-					<!--		</div>-->
-					<!--	</div>-->
-					<!--</div>-->
-					<div class="col-md-6 column">
-						<h3>
-				成長率：基本ステータス
-			</h3>
+					<div class="col-md-5 column">
+						<h3>成長率：基本ステータス</h3>
 						<table class="table table-bordered">
 							<thead>
 								<tr>
 									<th>
 										種別
+									</th>
+									<th>
+										初期値
 									</th>
 									<th>
 										現在値
@@ -386,6 +346,9 @@
 										{{label}}
 									</td>
 									<td>
+										{{after}}
+									</td>
+									<td>
 										{{before}}
 									</td>
 									<td>
@@ -403,113 +366,29 @@
 								</tr>
 							</tbody>
 						</table>
-						<h3>
-				成長率：戦闘力等
-			</h3>
-						<table class="table">
-							<thead>
-								<tr>
-									<th>
-										力
-									</th>
-									<th>
-										13
-									</th>
-									<th>
-										0.33
-									</th>
-									<th>
-										Status
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										1
-									</td>
-									<td>
-										TB - Monthly
-									</td>
-									<td>
-										01/04/2012
-									</td>
-									<td>
-										Default
-									</td>
-								</tr>
-								<tr class="active">
-									<td>
-										1
-									</td>
-									<td>
-										TB - Monthly
-									</td>
-									<td>
-										01/04/2012
-									</td>
-									<td>
-										Approved
-									</td>
-								</tr>
-								<tr class="success">
-									<td>
-										2
-									</td>
-									<td>
-										TB - Monthly
-									</td>
-									<td>
-										02/04/2012
-									</td>
-									<td>
-										Declined
-									</td>
-								</tr>
-								<tr class="warning">
-									<td>
-										3
-									</td>
-									<td>
-										TB - Monthly
-									</td>
-									<td>
-										03/04/2012
-									</td>
-									<td>
-										Pending
-									</td>
-								</tr>
-								<tr class="danger">
-									<td>
-										4
-									</td>
-									<td>
-										TB - Monthly
-									</td>
-									<td>
-										04/04/2012
-									</td>
-									<td>
-										Call in to confirm
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-8 column">
+						<img src="http://dummyimage.com/600x200/123/def"></img>
+					</div>
+					<div class="col-md-4 column">
+						<img src="http://dummyimage.com/300x200/123/def"></img>
 					</div>
 				</div>
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						工事中
+						<img src="http://dummyimage.com/300x100/123/def"></img>
 					</div>
 					<div class="col-md-4 column">
-						工事中
+						<img src="http://dummyimage.com/300x100/123/def"></img>
 					</div>
 					<div class="col-md-4 column">
-						工事中
+						<img src="http://dummyimage.com/300x100/123/def"></img>
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript" src="js/data.js"></script>
 			<script type="text/javascript" src="js/scripts.js"></script>
 </body>
 

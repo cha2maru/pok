@@ -325,6 +325,20 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:cha2maru/pok.git',
+          branch: 'gh-pages'
+        }
+      }
     }
   });
 
@@ -381,6 +395,23 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.registerTask('ghpages', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'cssmin',
+    'uglify',
+    'copy:dist',
+    'rev',
+    'usemin',
+    'htmlmin',
+    'buildcontrol:pages'
+  ]);
+
 
   grunt.registerTask('default', [
     'newer:jshint',

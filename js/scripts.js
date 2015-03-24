@@ -250,7 +250,7 @@ charaSelect = new Vue({
                 }
             }
 
-            tweet += "です。 http://cha2maru.github.io/pok/ #ファンキル"; 
+            tweet += "です。#pokstatus  #ファンキル"; 
             console.log(_character);
             console.log(_status);
             console.log(table1);
@@ -288,6 +288,18 @@ charaSelect = new Vue({
             };
 
             return status;
+        },
+        tweet: function(){
+            var _table = this.statusTable;
+            var hashtag = "pokstatus";
+            var url = "http://cha2maru.github.io/pok/";
+            
+            return {
+                text:_table.tweet,
+                hashtag: "pokstatus",
+                url: "http://cha2maru.github.io/pok/",
+                a: '<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-text="' + _table.tweet +'" data-url="'+url +'" data-hashtag="'+ hashtag+ '">Tweet</a>'
+            };
         },
         input_character: function() {
             console.log("input_character");
@@ -368,6 +380,9 @@ charaSelect = new Vue({
             console.log("statusTable:old/new");
             console.log(oldval);
             console.log(newval);
+        },
+        tweet: function(newval, oldval) {
+            twttr.widgets.load();
         },
     },
     data: {

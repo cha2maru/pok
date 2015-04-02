@@ -1,18 +1,31 @@
-(function(global, Vue, twttr, data) {
-    "use strict;"
+(function() {
+    "use strict";
     var charaSelect;
 
     charaSelect = new Vue({
         el: "body",
         created: function() {
+            // this.$watch("ranks",function(){
+            //     this.$set("inputRank",this.ranks[0]);
+            // });
             this.$set("entry", this.getEntry(data));
             this.$set("levels", this.getLevels());
             this.$set("ranks", this.getRanks());
             this.$set("types", this.getTypes());
             this.$set("pointsR", this.getPointsR());
             this.$set("points", this.getPoints());
+            this.$watch("levels",function(){
+                this.$set("inputLevel", this.levels[0].value);
+            });
+            this.$watch("ranks",function(){
+                this.$set("inputRank", this.ranks[0].value);
+            });
+            this.$watch("types",function(){
+                this.$set("inputType", this.types[0].value);
+            });
         },
-        ready: function() {},
+        ready: function() {
+        },
         methods: {
             getOptionObject: function(v) {
                 return {
@@ -101,14 +114,14 @@
             setInputStatus: function(target) {
                 console.log("setInputStatus");
                 console.log(target);
-                for (var key in target.before) {
-                    if (target.before[key] < 0) {
-                        target.before[key] = 0;
+                for (var bkey in target.before) {
+                    if (target.before[bkey] < 0) {
+                        target.before[bkey] = 0;
                     }
                 }
-                for (var key in target.after) {
-                    if (target.after[key] < 0) {
-                        target.after[key] = 0;
+                for (var akey in target.after) {
+                    if (target.after[akey] < 0) {
+                        target.after[akey] = 0;
                     }
                 }
                 console.log(target);
@@ -120,6 +133,14 @@
                     this.$set("after", target.after);
                 }
             },
+            setDefault: function() {
+                if (!this.inputLevel && this.levels) {
+                    this.$set("inputLevel", this.levels[0].value);
+                }
+                if (!this.inputType && this.types) {
+                    this.$set("inputType", this.types[0].value);
+                }
+            }
         },
         filters: {
             roundup: function(value, num) {
@@ -242,12 +263,12 @@
                 }
                 table1.push(last);
 
-                for (var i = 0; i < this.stIdx2.length; i++) {
+                for (var i2 = 0; i2 < this.stIdx2.length; i2++) {
                     var target2 = {};
-                    target2.label = this.stIdx2[i].label;
-                    target2.before = _st.before[this.stIdx2[i].suffix];
-                    target2.after = _st.after[this.stIdx2[i].suffix];
-                    target2.max = _chr.max[this.stIdx2[i].suffix];
+                    target2.label = this.stIdx2[i2].label;
+                    target2.before = _st.before[this.stIdx2[i2].suffix];
+                    target2.after = _st.after[this.stIdx2[i2].suffix];
+                    target2.max = _chr.max[this.stIdx2[i2].suffix];
                     if (_chr.level) {
                         target2.ave = (target2.before - target2.after) /
                             (_chr.level - 1);
@@ -323,7 +344,8 @@
                     text: _table.tweet,
                     hashtag: "pokstatus",
                     url: "http://cha2maru.github.io/pok/",
-                    a: '<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-text="' + _table.tweet + '" data-url="' + url + '" data-hashtag="' + hashtag + '">Tweet</a>'
+                    a: '<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-text="' +
+                        _table.tweet + '" data-url="' + url + '" data-hashtag="' + hashtag + '">Tweet</a>'
                 };
             },
             inputChar: function() {
@@ -374,6 +396,7 @@
             }
         },
         watch: {
+            inputRank: function() {},
             names: function() {
                 if (!this.names[0]) {
                     return;
@@ -394,17 +417,12 @@
                 console.log("character:old/new");
                 console.log(oldval);
                 console.log(newval);
-                if (!oldval || (newval.rank + newval.name + newval.job) !==
-                    (oldval.rank + oldval.name + oldval.job)) {
-                    if (newval.init && newval.max) {
-                        this.setInputStatus({
-                            before: newval.max,
-                            after: newval.init
-                        });
-                    }
-                }
-                else {
 
+                if (newval.max.hp > 0) {
+                    this.setInputStatus({
+                        before: newval.max,
+                        after: newval.init
+                    });
                 }
             },
             statusTable: function(newval, oldval) {
@@ -551,4 +569,4 @@
             maxPoint: 200
         }
     });
-})((this || 0).self || global, Vue, twttr, data);
+})();

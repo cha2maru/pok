@@ -396,6 +396,22 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('debug', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'cssmin',
+    // 'uglify',
+    'copy:dist',
+    'rev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+
   grunt.registerTask('ghpages', [
     'clean:dist',
     'wiredep',

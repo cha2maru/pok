@@ -14,17 +14,12 @@
             this.$set("types", this.getTypes());
             this.$set("pointsR", this.getPointsR());
             this.$set("points", this.getPoints());
-            this.$watch("levels",function(){
-                this.$set("inputLevel", this.levels[0].value);
-            });
-            this.$watch("ranks",function(){
-                this.$set("inputRank", this.ranks[0].value);
-            });
-            this.$watch("types",function(){
-                this.$set("inputType", this.types[0].value);
-            });
         },
         ready: function() {
+            this.$set("inputRank", this.ranks[0].value);
+            this.$set("inputType", this.types[0].value);
+            this.$set("inputLevel", this.levels[0].value);
+            this.$set("inputLevel", this.levels[0].value);
         },
         methods: {
             getOptionObject: function(v) {
@@ -112,8 +107,8 @@
                 return target;
             },
             setInputStatus: function(target) {
-                console.log("setInputStatus");
-                console.log(target);
+                // console.log("setInputStatus");
+                // console.log(target);
                 for (var bkey in target.before) {
                     if (target.before[bkey] < 0) {
                         target.before[bkey] = 0;
@@ -289,7 +284,7 @@
                     "。ステータスの1LVでの平均増加は" +
                     roundupAve + "。";
                 tweet += "ステータスは上から";
-                for (var i2 = 0; i < this.stIdx1.length; i2++) {
+                for (var i2 = 0; i2 < this.stIdx1.length; i2++) {
                     tweet += _st.before[this.stIdx1[i2].suffix];
                     if (i2 < this.stIdx1.length - 1) {
                         tweet += "/";
@@ -297,10 +292,10 @@
                 }
 
                 tweet += "です。#pokstatus  #ファンキル";
-                console.log(_chr);
-                console.log(_st);
-                console.log(table1);
-                console.log(table2);
+                // console.log(_chr);
+                // console.log(_st);
+                // console.log(table1);
+                // console.log(table2);
 
                 return {
                     table1: table1,
@@ -309,7 +304,7 @@
                 };
             },
             input_status: function() {
-                console.log("input_status");
+                // console.log("input_status");
                 var status = {
                     before: {
                         hp: this.before.hp,
@@ -339,6 +334,7 @@
                 var _table = this.statusTable;
                 var hashtag = "pokstatus";
                 var url = "http://cha2maru.github.io/pok/";
+                console.log(_table.tweet);
 
                 return {
                     text: _table.tweet,
@@ -349,7 +345,7 @@
                 };
             },
             inputChar: function() {
-                console.log("inputChar");
+                // console.log("inputChar");
                 var _chr = {
                     rank: this.$get("inputRank"),
                     name: this.$get("inputName"),
@@ -401,37 +397,53 @@
                 if (!this.names[0]) {
                     return;
                 }
-                var target = this.$get("names")[0].value;
-                this.$set("inputName", target);
-                console.log("name" + target);
+                else {
+                    if (!this.inputName || this.names.indexOf(this.getOptionObject(this.inputName)) < 0) {
+                        this.$set("inputName", this.names[0].value);
+                    }
+                }
             },
             jobs: function() {
                 if (!this.jobs[0]) {
                     return;
                 }
-                var target = this.$get("jobs")[0].value;
-                this.$set("inputJob", target);
-                console.log("job" + target);
-            },
-            inputChar: function(newval, oldval) {
-                console.log("character:old/new");
-                console.log(oldval);
-                console.log(newval);
-
-                if (newval.max.hp > 0) {
-                    this.setInputStatus({
-                        before: newval.max,
-                        after: newval.init
-                    });
+                else {
+                    if (!this.inputJob || this.jobs.indexOf(this.getOptionObject(this.inputJob)) < 0) {
+                        this.$set("inputJob", this.jobs[0].value);
+                    }
                 }
             },
-            statusTable: function(newval, oldval) {
-                console.log("statusTable:old/new");
-                console.log(oldval);
-                console.log(newval);
+            inputChar: function(newval, oldval) {
+                // console.log("character:old/new");
+                // console.log(oldval);
+                // console.log(newval);
+
+                if (newval.max.hp > 0) {
+                    if (oldval) {
+                        if (('' + oldval.rank + oldval.name + oldval.job) != ('' + newval.rank + newval.name + newval.job)) {
+                            this.setInputStatus({
+                                before: newval.max,
+                                after: newval.init
+                            });
+                        }
+                    }
+                    else {
+                        this.setInputStatus({
+                            before: newval.max,
+                            after: newval.init
+                        });
+                    }
+                }
             },
+            // statusTable: function(newval, oldval) {
+            //     console.log("statusTable:old/new");
+            //     console.log(oldval);
+            //     console.log(newval);
+            // },
             tweet: function() {
-                twttr.widgets.load();
+                // if (twttr) {
+                    twttr.widgets.load();
+                // }
             },
         },
         data: {
@@ -568,5 +580,12 @@
             }],
             maxPoint: 200
         }
+    });
+    Vue.nextTick(function() {
+        var _iChar = charaSelect.inputChar;
+        charaSelect.setInputStatus({
+            before: _iChar.max,
+            after: _iChar.init
+        })
     });
 })();

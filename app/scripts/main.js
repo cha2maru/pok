@@ -281,9 +281,9 @@
                     "/LV" + _chr.level +
                     "/" + _chr.type + ")の";
                 tweet += "戦闘力は" + roundupPrm +
-                    "。ステータスの1LVでの平均増加は" +
+                    "。平均増加は" +
                     roundupAve + "。";
-                tweet += "ステータスは上から";
+                tweet += "ステータスは";
                 for (var i2 = 0; i2 < this.stIdx1.length; i2++) {
                     tweet += _st.before[this.stIdx1[i2].suffix];
                     if (i2 < this.stIdx1.length - 1) {
@@ -291,7 +291,7 @@
                     }
                 }
 
-                tweet += "です。#pokstatus  #ファンキル";
+                tweet += "です。#pokstatus #ファンキル";
                 // console.log(_chr);
                 // console.log(_st);
                 // console.log(table1);
